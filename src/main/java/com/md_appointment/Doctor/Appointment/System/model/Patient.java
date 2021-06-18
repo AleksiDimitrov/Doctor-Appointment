@@ -27,8 +27,13 @@ public class Patient {
     private String password;
 
 
-    public Patient(){}
-
+    public Patient(String email, String name, int age, String sex, String password) {
+        this.email = email;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.password = password;
+    }
 
     public Long getID() {
         return ID;

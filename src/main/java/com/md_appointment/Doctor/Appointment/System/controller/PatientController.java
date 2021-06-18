@@ -1,40 +1,29 @@
 package com.md_appointment.Doctor.Appointment.System.controller;
 
-import com.md_appointment.Doctor.Appointment.System.model.Patient;
+import com.md_appointment.Doctor.Appointment.System.DTO.PatientRegistrationDTO;
+import com.md_appointment.Doctor.Appointment.System.service.PatientService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-@RestController
-public class PatientController{
 
 
+@Controller
+public class PatientController {
 
-    @RequestMapping("/register")
-    public Patient registerPatient(HttpServletRequest request, HttpServletResponse response){
+    private PatientService patientService;
 
-        String name = request.getParameter("Name");
-        int age = Integer.parseInt(request.getParameter("Age"));
-        String sex = request.getParameter("Sex");
-        String password = request.getParameter("Password");
-        String email = request.getParameter("Email");
-
-        Patient pt = new Patient();
-        pt.setName(name);
-        pt.setAge(age);
-        pt.setSex(sex);
-        pt.setPassword(password);
-        pt.setEmail(email);
-
-        return pt;
-
+    public PatientController(PatientService patientService) {
+        this.patientService = patientService;
+    }
+    @GetMapping("/registration")
+    public String showRegistrationPage(){
+        return "registration";
     }
 
-    @RequestMapping("/login")
-    public void LogIn(HttpServletRequest request,HttpServletResponse response){
-
+   @PostMapping
+    public void registerPatientAccount(@ModelAttribute("patient")PatientRegistrationDTO patientRegistrationDTO){
+        patientService.registerPatient(patientRegistrationDTO);
     }
-
 }

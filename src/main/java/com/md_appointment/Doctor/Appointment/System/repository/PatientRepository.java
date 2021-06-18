@@ -7,9 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient,Long> {
-/*
-    @Query("SELECT p FROM Patients p WHERE p.email = ?1")
-    Patient findByEmail(String email);
 
- */
 }
