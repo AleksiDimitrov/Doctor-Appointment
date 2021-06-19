@@ -10,6 +10,9 @@ public class PatientRegistrationDTO {
     private String sex;
     private String password;
 
+    public PatientRegistrationDTO() {
+    }
+
     public PatientRegistrationDTO(String email, String name, int age, String sex, String password) {
         this.email = email;
         this.name = name;

@@ -26,6 +26,8 @@ public class Patient {
     @Column(name = "password", nullable = false, length = 30)
     private String password;
 
+    public Patient() {
+    }
 
     public Patient(String email, String name, int age, String sex, String password) {
         this.email = email;
