@@ -1,36 +1,75 @@
 package com.md_appointment.Doctor.Appointment.System.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "Appointments")
+@Table(name = "Appointment")
 public class Appointment {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long ID;
-    private Date date;
-    private Time time;
-    private int patientId;
-    private int doctorId;
+
+    @Column(name = "date", nullable = false)
+    private LocalDate date;
+
+    @Column(name = "time", nullable = false)
+    private LocalTime time;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id",nullable = false)
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id",nullable = false)
+    private Doctor doctor;
 
 
+    public Appointment(LocalDate date, LocalTime time, Patient patient, Doctor doctor) {
+        this.date = date;
+        this.time = time;
+        this.patient = patient;
+        this.doctor = doctor;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     public Long getID() {
         return ID;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public Time getTime() {
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTime() {
         return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     @Override

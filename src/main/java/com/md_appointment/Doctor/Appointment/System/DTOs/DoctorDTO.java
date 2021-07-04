@@ -1,23 +1,20 @@
-package com.md_appointment.Doctor.Appointment.System.DTO;
+package com.md_appointment.Doctor.Appointment.System.DTOs;
 
-import javax.persistence.Column;
 
-public class PatientRegistrationDTO {
+public class DoctorDTO {
 
     private String email;
     private String name;
-    private int age;
-    private String sex;
+    private String department;
     private String password;
 
-    public PatientRegistrationDTO() {
-    }
+    public DoctorDTO(){
 
-    public PatientRegistrationDTO(String email, String name, int age, String sex, String password) {
+    }
+    public DoctorDTO(String email, String department, String name, String password) {
         this.email = email;
         this.name = name;
-        this.age = age;
-        this.sex = sex;
+        this.department = department;
         this.password = password;
     }
 
@@ -37,20 +34,12 @@ public class PatientRegistrationDTO {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getPassword() {
