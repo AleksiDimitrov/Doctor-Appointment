@@ -1,7 +1,8 @@
 package com.md_appointment.Doctor.Appointment.System.controller;
 
-import com.md_appointment.Doctor.Appointment.System.DTOs.AppointmentDTO;
-import com.md_appointment.Doctor.Appointment.System.DTOs.PatientDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.AppointmentDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.PatientDTO;
+import com.md_appointment.Doctor.Appointment.System.service.HospitalService;
 import com.md_appointment.Doctor.Appointment.System.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PatientController {
 
-    private PatientService patientService;
+    private HospitalService hospitalService;
 
     @Autowired
-    public PatientController(PatientService patientService) {
-        this.patientService = patientService;
+    public PatientController(HospitalService hospitalService) {
+        this.hospitalService = hospitalService ;
     }
 
     @ModelAttribute("patient")
@@ -37,7 +38,7 @@ public class PatientController {
 
     @PostMapping("/registration")
     public void registerPatientAccount(@ModelAttribute("patient") PatientDTO patientRegistrationDTO) {
-        patientService.registerPatient(patientRegistrationDTO);
+        hospitalService.addPatientAccount(patientRegistrationDTO);
     }
 
     @GetMapping("/login")
@@ -47,7 +48,7 @@ public class PatientController {
 
     @PostMapping("/login")
     public void logInPatient(String email,String password){
-        patientService.logIn(email,password);
+        hospitalService.logInAsPatient(email,password);
     }
 
     @GetMapping("/appointment")
@@ -57,7 +58,8 @@ public class PatientController {
 
     @PostMapping("/appointment")
     public void makeAppointment(@ModelAttribute("appointment") AppointmentDTO appointmentDTO,String docName){
-        patientService.makeAppointment(appointmentDTO,docName);
+        hospitalService.makeAppointment(appointmentDTO,docName);
     }
 
 }
+

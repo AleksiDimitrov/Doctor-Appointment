@@ -1,6 +1,8 @@
 package com.md_appointment.Doctor.Appointment.System.model;
 
 
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.DoctorDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,9 +20,9 @@ public class Doctor extends User{
     private String department;
 
 
-    public Doctor(String email,String name,String password,String department) {
-        super(email, name, password);
-        this.department = department;
+    public Doctor(DoctorDTO doctorDTO) {
+        super(doctorDTO.getEmail(), doctorDTO.getName(), doctorDTO.getPassword());
+        this.department = doctorDTO.getDepartment();
 
     }
 

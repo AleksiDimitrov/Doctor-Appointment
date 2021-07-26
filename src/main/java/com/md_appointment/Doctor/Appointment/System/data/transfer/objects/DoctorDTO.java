@@ -1,7 +1,7 @@
-package com.md_appointment.Doctor.Appointment.System.DTOs;
+package com.md_appointment.Doctor.Appointment.System.data.transfer.objects;
 
 
-public class DoctorDTO {
+public class DoctorDTO extends DTO {
 
     private String email;
     private String name;

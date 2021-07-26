@@ -1,10 +1,9 @@
 package com.md_appointment.Doctor.Appointment.System.service;
 
-import com.md_appointment.Doctor.Appointment.System.DTOs.AppointmentDTO;
-import com.md_appointment.Doctor.Appointment.System.DTOs.PatientDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.AppointmentDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.PatientDTO;
 import com.md_appointment.Doctor.Appointment.System.model.Appointment;
 import com.md_appointment.Doctor.Appointment.System.model.Patient;
-import com.md_appointment.Doctor.Appointment.System.model.User;
 import com.md_appointment.Doctor.Appointment.System.repository.AppointmentRepository;
 import com.md_appointment.Doctor.Appointment.System.repository.DoctorRepository;
 import com.md_appointment.Doctor.Appointment.System.repository.PatientRepository;
@@ -40,8 +39,7 @@ public class PatientService implements IPatientService{
 
         List<Patient> patientList = patientRepository.findAll();
 
-        Patient newPatient = new Patient(patientDTO.getEmail(), patientDTO.getName(),
-                patientDTO.getPassword(), patientDTO.getSex(), patientDTO.getAge());
+        Patient newPatient = new Patient(patientDTO);
 
         if(patientList.contains(newPatient)){
             System.out.println("User already exists.");
@@ -82,17 +80,17 @@ public class PatientService implements IPatientService{
     }
 
     private boolean checkDateAvailable(LocalDate date,LocalTime time,Long docId){
-        boolean available = false;
+        boolean isAvailable = false;
         List<Appointment> doctorAppointments = appointmentRepository.listDoctorAppointments(docId);
         for(Appointment appointment : doctorAppointments){
             if(appointment.getDate().equals(date) && appointment.getTime().equals(time)){
-                available = false;
+                isAvailable = false;
             }else {
-                available = true;
+                isAvailable = true;
                 break;
             }
             }
-        return available;
+        return isAvailable;
     }
 
 }

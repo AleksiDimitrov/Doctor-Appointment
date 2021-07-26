@@ -1,7 +1,7 @@
 package com.md_appointment.Doctor.Appointment.System.service;
 
-import com.md_appointment.Doctor.Appointment.System.DTOs.AppointmentDTO;
-import com.md_appointment.Doctor.Appointment.System.DTOs.DoctorDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.AppointmentDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.DoctorDTO;
 import com.md_appointment.Doctor.Appointment.System.model.Doctor;
 import com.md_appointment.Doctor.Appointment.System.repository.DoctorRepository;
 import com.md_appointment.Doctor.Appointment.System.repository.PatientRepository;
@@ -25,19 +25,19 @@ public class AdministratorService implements IAdministratiorService{
 
     @Override
     public void addDoctorAccount(DoctorDTO doctorDTO) {
-        List<Doctor> doctorList = doctorRepository.findAll();
+        List<Doctor> savedDoctors = doctorRepository.findAll();
 
-        Doctor newDoctor = new Doctor(doctorDTO.getEmail(), doctorDTO.getPassword(), doctorDTO.getName(), doctorDTO.getDepartment());
-        if(doctorList.contains(newDoctor)){
-            System.out.println("Doctor account already exists");
-        }else {
+        Doctor newDoctor = new Doctor(doctorDTO);
+        if(!savedDoctors.contains(newDoctor)){
             doctorRepository.save(newDoctor);
+        }else {
+            System.out.println("Doctor account already exists");
         }
     }
 
     @Override
     public void removeDoctorAccount(String doctorName) {
-        doctorRepository.deleteDoctorByName(doctorName);
+       // doctorRepository.deleteDoctorByName(doctorName);
     }
 
     @Override

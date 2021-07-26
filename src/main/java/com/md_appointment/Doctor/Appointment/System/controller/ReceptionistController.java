@@ -1,6 +1,6 @@
 package com.md_appointment.Doctor.Appointment.System.controller;
 
-import com.md_appointment.Doctor.Appointment.System.DTOs.DoctorDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.DoctorDTO;
 import com.md_appointment.Doctor.Appointment.System.service.AdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class AdministratorController {
+public class ReceptionistController {
 
     private AdministratorService administratorService;
 
     @Autowired
-    public AdministratorController(AdministratorService administratorService) {
+    public ReceptionistController(AdministratorService administratorService) {
         this.administratorService = administratorService;
     }
 

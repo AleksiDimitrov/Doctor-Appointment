@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient,Long> {
 
-
-    Patient findPatientByEmail(String email);
-
     @Query(value = "DELETE FROM Patient WHERE email =:email",nativeQuery = true)
     void deletePatientByEmail(@Param("email")String name);
 }

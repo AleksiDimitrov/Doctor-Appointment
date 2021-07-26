@@ -20,7 +20,7 @@ public interface DoctorRepository extends JpaRepository<Doctor,Long> {
     @Query(value = "SELECT id FROM Doctor WHERE name = :name",nativeQuery = true)
     Long getDoctorId(@Param("name") String name);
 
-    @Query(value = "DELETE FROM Doctor WHERE name =:name",nativeQuery = true)
-    void deleteDoctorByName(@Param("name")String name);
+    @Query(value = "DELETE FROM Doctor WHERE email =:email",nativeQuery = true)
+    void deleteDoctorByEmail(@Param("email")String email);
 
 }

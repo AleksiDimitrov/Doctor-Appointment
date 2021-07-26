@@ -1,5 +1,7 @@
 package com.md_appointment.Doctor.Appointment.System.model;
 
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.PatientDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +21,13 @@ public class Patient extends User{
     @Column(name = "age", nullable = false)
     private int age;
 
-    public Patient(String email, String name, String password, String sex, int age) {
+    public Patient(PatientDTO patientDTO) {
+        super(patientDTO.getEmail(), patientDTO.getName(), patientDTO.getPassword());
+        this.sex = patientDTO.getSex();
+        this.age = patientDTO.getAge();
+    }
+
+    public Patient(String email, String name, String password, String sex,int age) {
         super(email, name, password);
         this.sex = sex;
         this.age = age;

@@ -1,7 +1,7 @@
 package com.md_appointment.Doctor.Appointment.System.service;
 
-import com.md_appointment.Doctor.Appointment.System.DTOs.AppointmentDTO;
-import com.md_appointment.Doctor.Appointment.System.DTOs.DoctorDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.AppointmentDTO;
+import com.md_appointment.Doctor.Appointment.System.data.transfer.objects.DoctorDTO;
 
 public interface IAdministratiorService {
 

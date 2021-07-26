@@ -1,11 +1,11 @@
-package com.md_appointment.Doctor.Appointment.System.DTOs;
+package com.md_appointment.Doctor.Appointment.System.data.transfer.objects;
 
 import java.sql.Time;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class AppointmentDTO {
+public class AppointmentDTO extends DTO {
 
 
     private int day, month,year, hour, minute;
