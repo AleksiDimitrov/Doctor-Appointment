@@ -58,4 +58,15 @@ public class PatientDTO extends DTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "PatientDTO{" +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

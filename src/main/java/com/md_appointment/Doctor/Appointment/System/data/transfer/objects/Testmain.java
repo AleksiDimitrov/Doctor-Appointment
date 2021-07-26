@@ -6,7 +6,7 @@ public class Testmain {
 
     public static void main(String[] args) {
         Patient p1 = new Patient("adasd","name","pass","frog",23);
-        System.out.println( EntityToDtoConverter.converter(p1));
+        System.out.println( EntityToDtoConverter.converter(p1).toString());
 
     }
 }
